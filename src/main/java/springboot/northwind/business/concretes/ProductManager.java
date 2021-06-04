@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import springboot.northwind.business.abstracts.ProductService;
 import springboot.northwind.core.utilities.results.DataResult;
+import springboot.northwind.core.utilities.results.Result;
 import springboot.northwind.core.utilities.results.SuccessDataResult;
+import springboot.northwind.core.utilities.results.SuccessResult;
 import springboot.northwind.dataAccess.abstracts.ProductDao;
 import springboot.northwind.entities.concretes.Product;
 
@@ -27,6 +29,12 @@ public class ProductManager implements ProductService{
 	public DataResult<List<Product>> getAll() {
 		// TODO Auto-generated method stub
 		return new SuccessDataResult<List<Product>>(productDao.findAll(),"Data Listed.");
+	}
+
+	@Override
+	public Result add(Product product) {
+		this.productDao.save(product);
+		return new SuccessResult("Product added");
 	}
 
 }
