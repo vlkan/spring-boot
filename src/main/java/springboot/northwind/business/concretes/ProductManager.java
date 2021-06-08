@@ -24,6 +24,8 @@ public class ProductManager implements ProductService{
 		super();
 		this.productDao = productDao;
 	}
+	
+	
 
 	@Override
 	public DataResult<List<Product>> getAll() {
