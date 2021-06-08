@@ -37,4 +37,46 @@ public class ProductManager implements ProductService{
 		return new SuccessResult("Product added");
 	}
 
+	@Override
+	public DataResult<Product> getByProductName(String productName) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<Product>(productDao.getByProductName(productName),"Data Listed.");
+	}
+
+	@Override
+	public DataResult<Product> getByProductNameAndCategoryId(String productName, int categoryId) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<Product>(productDao.getByProductNameAndCategoryId(productName, categoryId),"Data Listed.");
+	}
+
+	@Override
+	public DataResult<List<Product>> getByProductNameOrCategoryId(String productName, int categoryId) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<Product>>(productDao.getByProductNameOrCategoryId(productName, categoryId),"Data Listed.");
+	}
+
+	@Override
+	public DataResult<List<Product>> getByCategoryIdIn(List<Integer> categories) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<Product>>(productDao.getByCategoryIdIn(categories),"Data Listed.");
+	}
+
+	@Override
+	public DataResult<List<Product>> getByProductNameContains(String productname) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<Product>>(productDao.getByProductNameContains(productname),"Data Listed.");
+	}
+
+	@Override
+	public DataResult<List<Product>> getByProductNameStartsWith(String productname) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<Product>>(productDao.getByProductNameStartsWith(productname),"Data Listed.");
+	}
+
+	@Override
+	public DataResult<List<Product>> getByProductNameAndCategory(String productName, int categoryId) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<Product>>(productDao.getByProductNameAndCategory(productName, categoryId),"Data Listed.");
+	}
+
 }
