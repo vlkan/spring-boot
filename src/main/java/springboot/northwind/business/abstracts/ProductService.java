@@ -6,6 +6,7 @@ import java.util.List;
 import springboot.northwind.core.utilities.results.DataResult;
 import springboot.northwind.core.utilities.results.Result;
 import springboot.northwind.entities.concretes.Product;
+import springboot.northwind.entities.dtos.ProductWithCategoryDto;
 
 public interface ProductService {
 	DataResult<List<Product>> getAll();
@@ -27,5 +28,7 @@ public interface ProductService {
 	DataResult<List<Product>> getByProductNameStartsWith(String productname);
 	
 	DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId);
+	
+	DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails();
 	
 }

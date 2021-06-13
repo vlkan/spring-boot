@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import springboot.northwind.entities.concretes.Product;
+import springboot.northwind.entities.dtos.ProductWithCategoryDto;
 
 public interface ProductDao extends JpaRepository<Product, Integer>{
 	Product getByProductName(String productName);
@@ -22,4 +23,7 @@ public interface ProductDao extends JpaRepository<Product, Integer>{
 	
 	@Query("From Product where productName=:productName and category.categoryId=:categoryId")//not working with db. working with JAVA value.
 	List<Product> getByNameAndCategory(String productName, int categoryId);
+	
+	@Query("select new springboot.northwind.entities.dtos.ProductWithCategoryDto(p.id, p.productName, c.categoryName) from Category c inner join c.products p")
+	List<ProductWithCategoryDto> getProductWithCategoryDetails();
 }
